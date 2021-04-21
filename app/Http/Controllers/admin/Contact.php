@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Contact extends Controller
 {
     function all_contact(){
-        $result = DB::table('contacts')->orderBy('id','desc')->get();
+        $result = DB::table('contacts')->orderBy('id','asc')->get();
         return view('admin/contact/contact_list')->with('ContactArr',$result);
     }
 }

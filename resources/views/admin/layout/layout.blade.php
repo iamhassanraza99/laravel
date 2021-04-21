@@ -35,15 +35,19 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>{{@config('constant.site_name')}}</span></a>
+						<a href="{{url('/admin/posts')}}" class="site_title"><i class="fa fa-paw"></i> <span>{{@config('constant.site_name')}}</span></a>
 					</div>
 
 					<div class="clearfix"></div>
-
+				<?php
+					use App\Http\Controllers\admin;
+					$user_name = session('name');
+					$image = admin::user_image($user_name);
+				?>
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img src="{{@asset('storage/post/'.$PostData->image)}}" alt="..." class="img-circle profile_img">
+							<img src="{{@asset('storage/post/'.$image[0]->image)}}" alt="..." class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
@@ -60,8 +64,8 @@
 							<h3>General</h3>
 							<ul class="nav side-menu">
 								<li><a href="/admin/posts"><i class="fa fa-home"></i> Posts </a></li>
-								<li><a href="/admin/pages"><i class="fa fa-home"></i> Page </a></li>
-								<li><a href="/admin/contact/list"><i class="fa fa-home"></i> Contact Us </a></li>
+								<li><a href="/admin/pages"><i class="fa fa-file-text"></i> Page </a></li>
+								<li><a href="/admin/contact/list"><i class="fa fa-address-book-o"></i> Contact Us </a></li>
 								<!-- <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="form.html">General Form</a></li>
@@ -132,7 +136,7 @@
 						<ul class=" navbar-right">
 							<li class="nav-item dropdown open" style="padding-left: 15px;">
 								<a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-									<img src="{{@asset('storage/post/'.$PostData->image)}}" alt="">{{session('name')}}
+									<img src="{{@asset('storage/post/'.$image[0]->image)}}" alt="">{{session('name')}}
 								</a>
 								<div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="javascript:;"> Profile</a>

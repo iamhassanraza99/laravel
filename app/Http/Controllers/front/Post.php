@@ -21,7 +21,24 @@ class Post extends Controller
         return $result;
     }
     function page($id){
-        $Post['result']=DB::table('pages')->where('slug',$id)->get();
-        return view('/frontend/page',$Post);
+        if($id != "contact-us"){
+            $Post['result'] = DB::table('pages')->where('slug',$id)->get();
+            return view('/frontend/page',$Post);
+        }
+        else{
+            return view('/frontend/contactus');
+        }
+    }
+    function contact_add(Request $request){
+        $data = array([
+            'name'=>$request->input('name'),
+            'email'=>$request->input('email'),
+            'mobile'=>$request->input('mobile'),
+            'message'=>$request->input('message')
+        ]);
+        DB::table('contacts')->insert($data);
+        $request->session()->flash('msg','Your message has been sent');
+        return redirect('/page/contact-us');
     }
 }
+ 

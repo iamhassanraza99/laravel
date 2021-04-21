@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','App\Http\Controllers\front\Post@post_list');
 Route::get('/post/{id}','App\Http\Controllers\front\Post@post_detail');
 Route::get('/page/{id}','App\Http\Controllers\front\Post@page');
+Route::post('/page/contact/submit','App\Http\Controllers\front\Post@contact_add');
 
 Route::view('admin/login','admin/login');
 Route::post('admin/login_auth','App\Http\Controllers\admin@login');

@@ -27,5 +27,9 @@ class admin extends Controller
         }
         
     }
+    public static function user_image($username){
+            $image = DB::table('users')->where('username',$username)->get('image');
+            return $image;
+    }
 }
  
