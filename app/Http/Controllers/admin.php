@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 class admin extends Controller
 {
     function login(Request $request){
-        $result = DB::table('users')->get();
+        $username = $request->input('username');
+        $result = DB::table('users')->where('username',$username)->get();
         if($result[0]->username == $request->input('username') && $result[0]->password == $request->input('password')){
             if($result[0]->status== '1'){
                 $request->session()->put('name',$result[0]->username);
@@ -32,4 +33,3 @@ class admin extends Controller
             return $image;
     }
 }
- 
