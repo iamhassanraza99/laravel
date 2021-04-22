@@ -61,7 +61,7 @@
                                     <td>{{$PageData->post_date}}</td>
                                     <td>
                                       <a href="{{url('/admin/posts/post_edit/'.$PageData->id)}}" class="badge badge-primary">Edit</a>
-                                      <a href="{{url('/admin/posts/delete/delete/'.$PageData->id)}}" class="badge badge-danger">Delete</a>
+                                      <a href="{{url('/admin/posts/delete/'.$PageData->id)}}" class="badge badge-danger">Delete</a>
                                     </td>
                                   </tr>
                                   @endforeach
